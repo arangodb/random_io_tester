@@ -123,3 +123,12 @@ cargo run --release -- [OPTIONS]
 # Get help
 cargo run -- --help
 ```
+
+If you are on Linux and want to build a static executable, you can try
+this:
+
+```bash
+rustup target add x86_64-unknown-linux-musl
+sudo apt-get install musl-tools
+cargo build --target x86_64-unknown-linux-musl --release
+```
