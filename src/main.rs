@@ -153,14 +153,14 @@ fn run_standard_io_tests(args: &Args, file_paths: &[String]) -> Result<Vec<ReadR
             
             for _ in 0..thread_operations {
                 // Select random file
-                let file_index = rng.gen_range(0..file_paths_clone.len());
+                let file_index = rng.random_range(0..file_paths_clone.len());
                 let file_path = &file_paths_clone[file_index];
                 
                 // Calculate random block position
                 let max_blocks = args_clone.file_size / args_clone.block_size;
                 if max_blocks == 0 { continue; }
                 
-                let block_index = rng.gen_range(0..max_blocks);
+                let block_index = rng.random_range(0..max_blocks);
                 let offset = block_index * args_clone.block_size;
                 
                 // Check if this block has been read before
@@ -243,13 +243,13 @@ fn run_mmap_tests(args: &Args, file_paths: &[String]) -> Result<Vec<ReadResult>,
             
             for _ in 0..thread_operations {
                 // Select random file
-                let file_index = rng.gen_range(0..mmaps_clone.len());
+                let file_index = rng.random_range(0..mmaps_clone.len());
                 
                 // Calculate random block position
                 let max_blocks = args_clone.file_size / args_clone.block_size;
                 if max_blocks == 0 { continue; }
                 
-                let block_index = rng.gen_range(0..max_blocks);
+                let block_index = rng.random_range(0..max_blocks);
                 let offset = block_index * args_clone.block_size;
                 
                 // Check if this block has been read before
