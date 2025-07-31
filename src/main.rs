@@ -166,7 +166,7 @@ fn run_standard_io_tests(args: &Args, file_paths: &[String]) -> Result<Vec<ReadR
                 // Check if this block has been read before
                 let is_first_read = {
                     let mut blocks = read_blocks_clone.lock().unwrap();
-                    blocks.insert(format!("{}:{}", file_index, block_index))
+                    blocks.insert(format!("{file_index}:{block_index}"))
                 };
                 
                 // Perform the read operation
@@ -255,7 +255,7 @@ fn run_mmap_tests(args: &Args, file_paths: &[String]) -> Result<Vec<ReadResult>,
                 // Check if this block has been read before
                 let is_first_read = {
                     let mut blocks = read_blocks_clone.lock().unwrap();
-                    blocks.insert(format!("{}:{}", file_index, block_index))
+                    blocks.insert(format!("{file_index}:{block_index}"))
                 };
                 
                 // Perform the memory access
